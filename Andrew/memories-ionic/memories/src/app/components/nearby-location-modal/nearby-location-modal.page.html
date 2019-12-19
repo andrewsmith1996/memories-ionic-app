@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Are you here?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- Map (not used, just used to get locations) -->
+    <div id="map" #map class="map"></div>  
+
+    <!-- List of nearby places -->
+    <ion-list>
+        <ion-item id="places" *ngFor="let place of places">
+            <ion-grid>
+                <ion-row>
+
+                    <!-- Location Details -->
+                    <ion-col size="8">
+                        <h2>{{ place.name }}</h2>
+                        <p>{{ place.address }}</p>
+                    </ion-col>
+
+                    <!-- Location Image -->
+                    <ion-col size="4">
+                        <img src="{{ place.photo_url }}"/>
+                    </ion-col>
+                </ion-row>
+
+                <!-- Check in button -->
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-button expand="block" color="primary" (click)="checkIn(place)">Check in</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item>    
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <!-- Extra buttons -->
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="primary" (click)="cancelModal()">Use Current Position</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="danger" (click)="cancelModal()">Cancel</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

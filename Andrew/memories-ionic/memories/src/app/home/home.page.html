@@ -1,0 +1,30 @@
+<ion-header>
+
+    <!-- Top Toolbar -->
+	<ion-toolbar>
+
+        <!-- Scan QR Code Button -->
+        <ion-button (click)="scanMemory()" slot="start" fill="clear">
+            <ion-icon name="qr-scanner"></ion-icon>
+        </ion-button>
+
+        <!-- Header Title -->
+		<ion-title>Your Memories</ion-title>
+        
+        <!-- Logout Button -->
+        <ion-button (click)="signOut()" slot="end" fill="clear">
+            <ion-icon name="log-out"></ion-icon>
+        </ion-button>
+
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- Show the memories -->
+    <memories-list [memories]="memories"></memories-list>
+</ion-content>
+
+<!-- Navbar -->
+<ion-footer translucent>
+    <nav-menu></nav-menu>
+</ion-footer>

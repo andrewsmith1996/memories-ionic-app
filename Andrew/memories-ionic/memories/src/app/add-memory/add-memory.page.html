@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Memory</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+
+        <!-- Title and location -->
+        <ion-row>
+            <ion-col size="8">
+                <ion-input [(ngModel)]="title" name="memory_title" placeholder="Enter title..."></ion-input>
+                <p>{{ location }}</p>
+            </ion-col>
+            <ion-col size="3">
+                <img *ngIf="!base64_image" src="/assets/img/image-placeholder.png" />
+                <img *ngIf="base64_image" src="{{ base64_image }}" />
+            </ion-col>
+
+            <ion-col size="1">
+                <ion-icon (click)="deletePhoto()" name="trash"></ion-icon>
+            </ion-col>
+        </ion-row>
+       
+        <!-- Datepicker -->
+        <ion-row>
+            <ion-col size="1">
+                <ion-icon name="calendar"></ion-icon>
+            </ion-col>
+
+            <ion-col size="11">
+                <ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="date" ></ion-datetime>
+            </ion-col>
+        </ion-row>
+       
+        <!-- Button Row -->
+        <ion-row>
+            <ion-col size="4">
+                <ion-button (click)="onAddPhotoPress()" expand="block"><ion-icon name="camera"></ion-icon></ion-button>
+            </ion-col>
+
+            <ion-col size="4">
+                <ion-button (click)="onAddFriendPress()" expand="block"><ion-icon name="person-add"></ion-icon></ion-button>
+            </ion-col>
+
+            <ion-col size="4">
+                <ion-button (click)="onGetLocationPress()" expand="block"><ion-icon name="pin"></ion-icon></ion-button>
+            </ion-col>
+        </ion-row>
+        
+        <!-- Memory Description -->
+        <ion-row>
+            <ion-col>
+                <ion-textarea [(ngModel)]="description" name="memory_description" placeholder="Thoughts..." rows="7"></ion-textarea>
+            </ion-col>
+        </ion-row>
+      
+        <!-- Location Map -->
+        <ion-row>
+            <ion-col>
+                <div #map class="map"></div>  
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <!-- Save Button -->
+    <ion-row>
+        <ion-col>
+            <ion-button color="primary" expand="block" (click)="saveMemory()">Save</ion-button>
+        </ion-col>
+    </ion-row>
+    
+    <!-- Nav Menu -->
+    <nav-menu></nav-menu>
+</ion-footer>
+
+

@@ -1,0 +1,37 @@
+
+
+<ion-toolbar>
+    <ion-grid>
+        <ion-row>
+
+            <!-- Memory List -->
+            <ion-col size="3">
+                <ion-button [routerLink]="['/home']" routerDirection="root" expand="block" shape="round">
+                    <ion-icon name="list"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+            <!-- Add Memory Screen -->
+            <ion-col size="3">
+                <ion-button [routerLink]="['/add-memory']" routerDirection="root" expand="block" shape="round">
+                    <ion-icon name="add"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+            <!-- Interactive Memory Map -->
+            <ion-col size="3">
+                <ion-button [routerLink]="['/memory-map']" routerDirection="root" expand="block" shape="round">
+                    <ion-icon name="compass"></ion-icon>
+                </ion-button>
+            </ion-col>
+
+            <!-- Search Memories modal -->
+            <ion-col size="3">
+                <ion-button (click)="openSearchMemoryModal()" expand="block" shape="round">
+                    <ion-icon name="search"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-toolbar>
+

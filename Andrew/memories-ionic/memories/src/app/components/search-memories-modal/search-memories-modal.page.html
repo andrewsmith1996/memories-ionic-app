@@ -1,0 +1,87 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Search Memories</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<!-- Search Inputs -->
+<ion-content>
+	<ion-grid>
+		
+		<!-- Title -->
+		<ion-row>
+			<ion-col>
+				<ion-input [(ngModel)]="searchTitle" name="searchTitle" placeholder="Title"></ion-input>
+			</ion-col>
+		</ion-row>
+		
+		<!-- Location -->
+		<ion-row>
+			<ion-col>
+				<ion-input [(ngModel)]="searchLocation" name="sesrchLocation" placeholder="Location"></ion-input>
+			</ion-col>
+		</ion-row>
+		
+		<!-- Start Date -->
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label>From</ion-label>
+					<ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="searchDateStart"></ion-datetime>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		
+		<!-- End Date -->
+		<ion-row>
+			<ion-col>
+				<ion-item>
+					<ion-label>To</ion-label>
+					<ion-datetime display-format="DD/MM/YYYY" [(ngModel)]="searchDateEnd"></ion-datetime>
+				</ion-item>
+			</ion-col>
+		</ion-row>
+		
+		<!-- Friends -->
+		<ion-row>
+			<ion-col size="9">
+                <!-- Friends List -->
+                <h2>Friends</h2>
+                <p *ngIf="searchFriends.length == 0">No friends added</p>
+                <div *ngIf="searchFriends.length > 0">
+                    <ion-list lines="none">
+                        <ion-item *ngFor="let friend of searchFriends">
+                            <p>{{ friend.name }}</p>
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </ion-col>
+            <ion-col size="3">
+                <ion-button expand="block" color="primary" (click)="addFriends()">
+                    <ion-icon name="person-add"></ion-icon>
+                </ion-button>
+            </ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <!-- Search Button -->
+		<ion-row>
+            <ion-col>
+                    <ion-button expand="block" color="primary" (click)="searchMemories()">Search</ion-button>
+                </ion-col>
+            </ion-row>
+            
+            <!-- Cancel/Close button -->
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="block" color="danger" (click)="closeModal()">Cancel</ion-button>
+                </ion-col>
+            </ion-row>
+    </ion-grid>
+</ion-footer>
+
+
+

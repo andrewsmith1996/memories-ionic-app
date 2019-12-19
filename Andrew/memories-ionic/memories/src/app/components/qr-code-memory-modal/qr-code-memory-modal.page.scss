@@ -1,0 +1,13 @@
+ion-toolbar{
+    --background:var(--ion-color-primary);
+    color:white;
+}
+
+ion-list{
+    ion-item{
+        p{
+            margin-top:0;
+            margin-bottom:0;
+        }
+    }
+}

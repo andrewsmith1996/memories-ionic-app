@@ -1,0 +1,61 @@
+<ion-header *ngIf="memory">
+	<ion-toolbar>
+
+		<!-- Back button -->
+		<ion-buttons slot="start">
+			<ion-back-button></ion-back-button>
+		</ion-buttons>
+
+		<!-- Memory title -->
+		<ion-title no-padding>{{ memory.user_name }}'s Memory</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="memory">
+
+	<!-- Display the memory's image if we have one -->
+	<img *ngIf="memory.photo_url" src="{{ memory.photo_url }}"/>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col size="12">
+				
+				<!-- Memory Details -->
+				<h1>{{ memory.title }}</h1>
+				<ion-text color="primary">
+					<p>Uploaded by {{ memory.user_name }}</p>
+				</ion-text>
+				
+				<p>{{ format_date(memory.date) }}</p>
+				<p>{{ memory.description }}</p> 
+				<p>{{ memory.location }}</p> 
+
+				<!-- Memory Friends (if we have any) -->
+				<div *ngIf="memory.friends && memory.friends.length > 0">
+					<h2>Friends</h2>
+
+					<!-- Loop through and list friends -->
+					<ion-list lines="none">
+						<ion-item *ngFor="let friend of memory.friends">
+							<p>{{ friend.name }} </p>
+						</ion-item>
+					</ion-list>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>    
+</ion-content>
+
+<ion-footer *ngIf="memory">
+	<!-- Buttons -->
+	<ion-row>
+		<ion-col>
+			<ion-button expand="block" color="primary" (click)="saveMemory()">Copy to my memories</ion-button>
+		</ion-col>
+	</ion-row>
+	<ion-row>
+		<ion-col>
+			<ion-button expand="block" color="danger" (click)="cancelModal()">Dismiss</ion-button>
+		</ion-col>
+	</ion-row>
+</ion-footer>

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Add Friend</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <!-- Friends list -->
+    <ion-list>
+        <ion-item *ngFor="let friend of friends">
+            <ion-grid>
+                <ion-row>
+                    
+                    <!-- Picture -->
+                    <ion-col size="2">
+                        <img src="/assets/img/person-placeholder.png" />
+                    </ion-col>
+                    
+                    <!-- Contact Name -->
+                    <ion-col size="7">
+                        <h2>{{ friend.name }}</h2>
+                    </ion-col>
+
+                    <!-- Add Contact button -->
+                    <ion-col size="3">
+                        <ion-button *ngIf="!friend.added" fill="clear" expand="block" size="large" (click)="addFriend(friend)">
+                            <ion-icon name="person-add"></ion-icon>
+                        </ion-button>
+                        <ion-button *ngIf="friend.added" fill="clear" expand="block" size="large" (click)="removeFriend(friend)">
+                            <ion-icon name="close"></ion-icon>
+                        </ion-button>
+                    </ion-col>
+                    
+                </ion-row>
+            </ion-grid>
+        </ion-item>   
+    </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+
+        <!-- Manual Add Friend row -->
+        <ion-row>
+            <ion-col size="9">
+                <ion-input [(ngModel)]="manualFriendName" name="manualFriendName" placeholder="Name..."></ion-input>
+            </ion-col>
+            <ion-col size="3">
+                <ion-button expand="block" (click)="addFriendManual()">
+                    <ion-icon name="add"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        
+        <!-- Buttons to finish/close -->
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="primary" (click)="saveFriends()">Done</ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="danger" (click)="cancelModal()">Cancel</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>
+

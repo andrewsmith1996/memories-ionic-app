@@ -1,0 +1,22 @@
+
+ion-content{
+    .map{
+        height:250px;
+    }
+    h1{
+        margin-top:4px;
+    }
+
+    h2{
+        margin-bottom:0;
+    }
+
+    ion-list{
+        ion-item{
+            p{
+                margin-top:0;
+                margin-bottom:0;
+            }
+        }
+    }
+}

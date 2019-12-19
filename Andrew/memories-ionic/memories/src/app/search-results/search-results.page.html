@@ -1,0 +1,21 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title>Search Results</ion-title>
+        
+        <!-- Sign out button -->
+        <ion-button (click)="signOut()" slot="end" fill="clear">
+            <ion-icon name="log-out"></ion-icon>
+        </ion-button>
+
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- Memory List -->
+    <memories-list [memories]="memories"></memories-list>
+</ion-content>
+
+<ion-footer translucent>
+    <!-- Navigation Bar -->
+    <nav-menu></nav-menu>
+</ion-footer>

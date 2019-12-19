@@ -1,0 +1,27 @@
+<!-- Displayed if no memories are available -->
+<p text-center *ngIf="memories && memories.length == 0">No Memories found</p>
+
+<!-- List of cards shown if we have memories -->
+<div *ngIf="memories && memories.length > 0 && current_user">
+
+    <!-- Check if the memory has been copied if not, if so then change the colour, loop through memories -->
+    <ion-card [color]="memory.user_name != current_user ? 'primary' : 'light'" *ngFor="let memory of memories" [routerLink]="'/memory-diary-detail/' + memory.id" routerDirection="forward">
+        
+        <!-- Memory Photo -->
+        <img *ngIf="memory.photo_url" src="{{ memory.photo_url }}"/>
+
+        <!-- Memory Details -->
+        <ion-card-content>
+
+            <!-- Date (formatted by function in controller) -->
+            <p>{{ format_date(memory.date) }}
+                <!-- Show some text and an icon if the memory has been copied from a friend -->
+                <span *ngIf="memory.user_name != current_user" style="float:right;">Copied <ion-icon name="people"></ion-icon></span>
+            </p>
+
+            <!-- Memory Title and Description -->
+            <h1>{{ memory.title }}</h1>
+            <p>{{ memory.description }}</p>
+        </ion-card-content>
+    </ion-card>   
+</div>

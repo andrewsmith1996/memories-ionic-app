@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- Back Button -->
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+
+        <!-- Title -->
+        <ion-title>Memory</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <!-- Memory Image -->
+    <img *ngIf="memory && memory.photo_url" src="{{ memory.photo_url }}"/>
+
+    <ion-grid>
+        <ion-row *ngIf="memory">
+
+            <!-- Memory Details -->
+            <ion-col size="9">
+                <h1>{{ memory.title }}</h1>
+                
+                <ion-text *ngIf="memory.user_name != current_user" color="primary">
+                    <p>Uploaded by {{ memory.user_name }}</p>
+                </ion-text> 
+
+                <!-- Memory Details -->
+                <p>{{ format_date(memory.date) }}</p>
+                <p>{{ memory.description }}</p> 
+                <p>{{ memory.location }}</p> 
+
+                <!-- Friends List -->
+                <div *ngIf="memory.friends && memory.friends.length > 0">
+                    <h2>Friends</h2>
+                    <ion-list lines="none">
+                        <ion-item *ngFor="let friend of memory.friends">
+                            <p>{{ friend.name }} </p>
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </ion-col>
+
+            <!-- Share Button (opens modal) -->
+            <ion-col size="3">
+                <ion-button (click)="shareMemory()" expand="block"><ion-icon name="share-alt"></ion-icon></ion-button>
+            </ion-col>
+        </ion-row>
+        
+        <!-- Memory Map -->
+        <div #map class="map"></div>
+    </ion-grid>    
+</ion-content>

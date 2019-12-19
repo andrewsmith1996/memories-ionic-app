@@ -1,0 +1,83 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Share Memory <ion-icon name="share-alt"></ion-icon></ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <!-- Display the memory photo -->
+    <img *ngIf="memory.photo_url" src="{{ memory.photo_url }}"/>
+
+    <ion-grid>
+        <ion-row>
+            <!-- Memory Details -->
+            <ion-col>
+
+                <h1>{{ memory.title }}</h1>
+                
+                <!-- If it's a copied memory -->
+                <ion-text *ngIf="memory.user_name != current_user" color="primary">
+                    <p>Uploaded by {{ memory.user_name }}</p>
+                </ion-text> 
+
+                <!-- Memory information -->
+                <p>{{ format_date(memory.date) }}</p>
+                <p>{{ memory.description }}</p> 
+                <p>{{ memory.location }}</p> 
+
+                <!-- If this memory has any friends associated with it then show them -->
+                <div *ngIf="memory.friends && memory.friends.length > 0">
+                    <h2>Friends</h2>
+                    <ion-list lines="none">
+                        <ion-item *ngFor="let friend of memory.friends">
+                            <p>{{ friend.name }} </p>
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <!-- Share Icons -->
+        <ion-row>
+            <ion-col size="4">
+                <ion-button color="primary" (click)="shareViaFacebook()" expand="block" size="large"><ion-icon name="logo-facebook"></ion-icon></ion-button>
+            </ion-col>
+            <ion-col size="4">
+                <ion-button color="primary" (click)="shareViaTwitter()" expand="block" size="large"><ion-icon name="logo-twitter"></ion-icon></ion-button>
+            </ion-col>
+            <ion-col size="4">
+                <ion-button color="primary" (click)="shareViaInstagram()" expand="block" size="large"><ion-icon name="logo-instagram"></ion-icon></ion-button>
+            </ion-col>
+        </ion-row>
+
+        <!-- QR Code Info -->
+        <ion-row>
+            <ion-col>
+                <p class="ion-text-center">Scan QR code to share directly with friends</p>
+            </ion-col>
+        </ion-row>
+        
+        <!-- QR Code -->
+        <ion-row>
+            <!-- Empty cols to align the code center, as all codes may be different sizes! -->
+            <ion-col size="4"></ion-col>
+            <ion-col size="4">
+                <ngx-qrcode [qrc-value] = "qr_code_value" qrc-class = "aclass" qrc-errorCorrectionLevel = "L"></ngx-qrcode>
+            </ion-col>
+            <ion-col size="4"></ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+
+<ion-footer>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" color="danger" (click)="cancelModal()">Cancel</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>
+
