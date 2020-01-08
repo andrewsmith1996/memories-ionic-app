@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1 class="header__title">{{ title }}</h1>
-    <h2 class="header__subtitle">{{ jobRole }}</h2>
-    <p class="header__intro" v-html="intro"></p>
+    <h1 class="header__title">Andrew Smith</h1>
+    <h2 class="header__subtitle">Developer</h2>
+    <p class="header__intro">A double award winning First Class BSc (Hons) Computer Science graduate and agency experienced developer specialising in web development and mobile app development.<br /><br />Currently working with Vue.js, MEAN stack technologies, native mobile application development and cross-platform application development.</p>
     <SocialLinks />
   </div>
 </template>
@@ -16,11 +16,7 @@ import SocialLinks from "../social/SocialLinks.vue";
     SocialLinks
   }
 })
-export default class HeaderContent extends Vue {
-  @Prop({type: String, default: "Andrew Smith"}) title!: string;
-  @Prop({type: String, default: "Developer"}) jobRole!: string;
-  @Prop({type: String}) intro!: string;
-}
+export default class HeaderContent extends Vue {}
 </script>
 
 <style lang="scss">

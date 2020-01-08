@@ -3,7 +3,7 @@
       <div class="projects__inner-container">
         <div class="project-showcase__header">
             <h2>Projects &amp; Extra Curricular</h2>
-            <p class="subtitle">{{ projectsContent.subtitle }}</p>
+            <p class="subtitle">What have I done?</p>
         </div>
         <div class="projects__cards">
             <div class="projects__card projects__card--three">

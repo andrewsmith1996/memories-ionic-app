@@ -6,7 +6,7 @@
       <h2 class="contact__title">Say hello</h2> 
       <p class="contact__subtitle">Get in touch</p>
       <div class="contact__container">
-        <SocialLinks class="contact__social" :links="[]"/>
+        <SocialLinks class="contact__social" />
       </div>
        <BlogPreview />
     </div>

@@ -119,6 +119,7 @@ p, li {
 	margin-bottom:0;
 
 	&__inner-container{
+		position:relative;
 		@include inner-container;
 		display: flex;
 		align-items:center;

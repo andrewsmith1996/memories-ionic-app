@@ -1,9 +1,11 @@
 <template>
-  <div id="app">
-      <!DOCTYPE HTML>
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,500|Open+Sans:600">
+      </head>
       <body>
-        <Header />
+        <div id="app">
+          <Header />
           <div class="gradient-wrapper">
             <AboutPanel />
             <ProjectShowcase />
@@ -12,10 +14,10 @@
             <Projects />
             <Contact /> 
           </div>
-        <Footer />
+          <Footer />
+        </div>
       </body>
     </html>
-  </div>
 </template>
 
 <script lang="ts">

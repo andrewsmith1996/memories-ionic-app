@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <div class="header__inner-container">
-        <!-- <HeaderContent class="header__content" :title="globalContent.headerTitle" :jobRole="globalContent.headerJobRole" :intro="globalContent.headerIntro"/> -->
+        <HeaderContent class="header__content"/>
         <Technologies class="header__technologies"/>
       </div>
   </header>
